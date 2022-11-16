@@ -1,0 +1,297 @@
+@font-face {
+  font-family: "Fuente";
+  src: url("fonts/Rosario-Regular.ttf");
+}
+
+body {
+  font-family: "Fuente";
+  background-color: #f7e7ff;
+  font-size: 12px;
+  text-align: center;
+}
+
+header {
+  background-color: #f7e7ff;
+  align-items: center;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 70px;
+  padding: 0 20px;
+  width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+header a {
+  text-decoration: none;
+  color: black;
+}
+
+header > div > h1 > a {
+  font-size: 40px;
+  color: #6c0fcf;
+  /*  */
+  text-shadow: 1px 0px 1px #e2e2e2, 0px 1px 1px #eeeeee, 2px 1px 1px #e2e2e2,
+    1px 2px 1px #eeeeee, 3px 2px 1px #e2e2e2, 2px 3px 1px #eeeeee,
+    4px 3px 1px #e2e2e2, 3px 4px 1px #eeeeee, 5px 4px 1px #e2e2e2,
+    4px 5px 1px #eeeeee, 6px 5px 1px #e2e2e2, 5px 6px 1px #eeeeee,
+    7px 6px 1px #e2e2e2;
+
+  transition: all 0.2s ease-out;
+}
+
+header > div > h1 > a:hover {
+  color: #c898fc;
+}
+
+.cabecera_usuario {
+  font-size: 25px;
+  display: grid;
+  grid-template-areas:
+    "usuario usuario usuario"
+    "carrito carrito carrito"
+    "usuarios usuarios usuarios"
+    "cerrar cerrar cerrar";
+  text-align: center;
+}
+
+.cabecera_usuario > span {
+  grid-area: usuario;
+}
+
+.usuarios_cabecera {
+  grid-area: usuarios;
+  color: rgb(110, 110, 173);
+  margin-top: 15px;
+  animation: fadein 2s;
+}
+
+.usuarios_cabecera::before {
+  content: "🕵🏻";
+  font-size: 20px;
+  animation: fadein 5s;
+}
+
+.usuarios_cabecera::after {
+  content: "🕵🏻";
+  font-size: 20px;
+  animation: fadein 5s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.carrito_cabecera {
+  margin-top: 15px;
+  grid-area: carrito;
+}
+
+.carrito_cabecera:hover {
+  cursor: pointer;
+  font-size: 27px;
+  transition: all 0.3s ease;
+}
+
+.logout {
+  grid-area: cerrar;
+  font-size: 15px;
+  margin-top: 15px;
+}
+
+.logout:hover {
+  font-size: 15px;
+  color: rgb(197, 127, 127);
+}
+
+.usuario_registrado {
+  font-size: 25px;
+  color: rgb(169, 127, 197);
+  text-shadow: rgb(255, 255, 255) 4px 3px 0px;
+  --darkreader-inline-color: #e8e6e3;
+  --darkreader-inline-bgimage: initial;
+  --darkreader-inline-bgcolor: #404548;
+}
+
+.ofertas_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 35px;
+  width: 25rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: linear-gradient(to right, #f2d7ff 50%, #f7e7ff 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all 0.2s ease-out;
+}
+
+.ofertas_img:hover {
+  background-position: left bottom;
+}
+
+.productos,
+.ofertas {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  gap: 20px;
+}
+
+.ofertas {
+  justify-content: center;
+}
+
+.oferta {
+  color: green;
+}
+
+.producto,
+.carrito,
+.registrar,
+.iniciar,
+.errores_registro,
+.usuario {
+  display: flex;
+  flex-direction: column;
+
+  width: 300px;
+  height: 100%;
+
+  margin-bottom: 20px;
+  padding: 10px;
+
+  text-align: center;
+
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ccc;
+}
+
+.registrar,
+.iniciar,
+.usuario,
+form,
+.errores_registro {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.usuarios {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.usuario {
+  margin-top: 50px;
+}
+
+form input {
+  margin: 5px;
+  padding: 5px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+form label {
+  margin-top: 10px;
+}
+
+input:hover {
+  cursor: pointer;
+  border-color: #ccc;
+}
+
+input:focus {
+  background-color: #f7e7ff;
+}
+
+input[type="submit"] {
+  background-color: #f7e7ff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #ccc;
+  margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: rgb(217, 197, 238);
+  transition: all 0.3s ease;
+}
+
+.error {
+  color: rgb(190, 15, 15);
+}
+
+.correcto {
+  color: rgb(40, 129, 40);
+}
+
+.registrar a {
+  margin-top: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.registrar a:hover {
+  cursor: pointer;
+  color: rgb(217, 197, 238);
+  transition: all 0.3s ease;
+}
+
+.carrito {
+  width: 30rem;
+  margin: auto;
+  font-size: 15px;
+}
+
+.carrito ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carrito li {
+  margin: 10px 0;
+}
+
+.botones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.botones img {
+  width: 20px;
+  height: 20px;
+}
+
+.botones img:hover {
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  transition: all 0.3s ease;
+}
+
+.imagen_producto {
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 5px #ccc;
+}
