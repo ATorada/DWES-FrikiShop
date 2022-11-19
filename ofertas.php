@@ -14,6 +14,7 @@ if (isset($_SESSION["usuario"])) {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,6 +22,7 @@ if (isset($_SESSION["usuario"])) {
     <title>Ofertas</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <?php require_once('includes/cabecera.inc.php'); ?>
     <h1>Ofertas</h1>
@@ -36,10 +38,13 @@ if (isset($_SESSION["usuario"])) {
             echo '<p>' . $producto['categoria'] . '</p>';
             echo '<p><strong>' . $producto['precio'] . '€</strong></p>';
             echo '<p><strong>' . $producto['oferta'] . '% de descuento</strong></p>';
-            echo '<p><strong>' . round($producto['precio'] - ($producto['precio'] * $producto['oferta'] / 100),2) . '€</strong></p>';
+            echo '<p><strong>' . round($producto['precio'] - ($producto['precio'] * $producto['oferta'] / 100), 2) . '€</strong></p>';
             echo '</div>';
         }
+        unset($resultado);
+        unset($conexion);
         ?>
     </div>
 </body>
+
 </html>

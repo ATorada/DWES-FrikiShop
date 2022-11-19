@@ -6,6 +6,8 @@ require_once('includes/autologin.inc.php');
 
 require_once('includes/conexion.inc.php');
 
+require_once('includes/expiracion_carrito.inc.php');
+
 //Si el usuario no está logueado se redirige a index.php
 if (!isset($_SESSION["usuario"])) {
     header("Location: index.php");
@@ -30,17 +32,21 @@ if (!isset($_SESSION["usuario"])) {
         <ul>
             <?php
             //Se muestra el carrito del usuario y se calcula el precio total
-            if(isset($_SESSION["carrito"]) && count($_SESSION["carrito"]) > 0){
+            if (isset($_SESSION["carrito"]) && count($_SESSION["carrito"]) > 0) {
                 $conexion = conectar();
                 $total = 0;
                 foreach ($_SESSION["carrito"] as $producto => $cantidad) {
-                    $resultado = $conexion->query("SELECT nombre, precio, oferta FROM productos WHERE codigo = $producto");
-                    $producto = $resultado->fetch(PDO::FETCH_ASSOC);
-                    $precio = round($producto['precio'] - ($producto['precio'] * $producto['oferta'] / 100),2);
+                    $consulta = $conexion->prepare("SELECT nombre, precio, oferta FROM productos WHERE codigo = ?");
+                    $consulta->execute([$producto]);
+                    $producto = $consulta->fetch(PDO::FETCH_ASSOC);
+                    $precio = round($producto['precio'] - ($producto['precio'] * $producto['oferta'] / 100), 2);
                     $total += $precio * $cantidad;
                     echo '<li>' . $producto['nombre'] . ' - ' . ($cantidad == 1 ? $cantidad . " unidad" : $cantidad . " unidades") . ' - ' . $precio . '€/unidad' . '</li>';
+                    unset($consulta);
+                    unset($producto);
                 }
                 echo '<li><strong>Total: ' . $total . '€</strong></li>';
+                unset($conexion);
             } else {
                 //Si el carrito está vacío se muestra un mensaje
                 echo '<li>No hay productos en el carrito</li>';

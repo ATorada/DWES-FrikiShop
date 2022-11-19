@@ -6,21 +6,22 @@ require_once('includes/autologin.inc.php');
 
 require_once('includes/conexion.inc.php');
 
+require_once('includes/expiracion_carrito.inc.php');
+
 //Si se recibe una acción y un producto se añade o elimina del carrito
 if (isset($_GET['accion']) && isset($_GET['id'])) {
 
     switch ($_GET['accion']) {
-        //Si la acción es añadir se añade el producto al carrito
         case 'add':
+            //Si la acción es añadir se añade el producto al carrito
             if (isset($_SESSION['carrito'][$_GET['id']])) {
-                echo "El producto ya está en el carrito";
                 $_SESSION['carrito'][$_GET['id']]++;
             } else {
                 $_SESSION['carrito'][$_GET['id']] = 1;
             }
             break;
-        //Si la acción es eliminar se elimina el producto del carrito
         case 'remove':
+            //Si la acción es eliminar se elimina el producto del carrito
             if (isset($_SESSION['carrito'][$_GET['id']]) && $_SESSION['carrito'][$_GET['id']] >= 1) {
                 $_SESSION['carrito'][$_GET['id']]--;
             }
@@ -28,8 +29,8 @@ if (isset($_GET['accion']) && isset($_GET['id'])) {
                 unset($_SESSION['carrito'][$_GET['id']]);
             }
             break;
-        //Si la acción es vaciar se vacía el carrito
         case 'delete':
+            //Si la acción es vaciar se vacía el carrito
             if (isset($_SESSION['carrito'][$_GET['id']])) {
                 unset($_SESSION['carrito'][$_GET['id']]);
             }
@@ -68,7 +69,7 @@ if (isset($_GET['accion']) && isset($_GET['id'])) {
             echo "<div>{$producto['precio']} €</div>";
             echo "<div>{$producto['categoria']}</div>";
             echo "<div>Stock: {$producto['stock']}</div>";
-            if($producto['oferta'] > 0){
+            if ($producto['oferta'] > 0) {
                 echo "<div class='oferta'>EN OFERTA</div>";
             }
             echo "<div class='botones'>";
@@ -79,9 +80,11 @@ if (isset($_GET['accion']) && isset($_GET['id'])) {
             echo "</div>";
         }
         echo '</div>';
+        unset($resultado);
+        unset($conexion);
     } else {
         //Si no hay un usuario logueado se muestra un formulario de registro
-        ?>
+    ?>
         <div class="registrar">
             <h2>Regístrate</h2>
             <form action="registro.php" method="post">

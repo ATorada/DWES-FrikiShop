@@ -8,6 +8,7 @@ setcookie('token', '', time() - 1);
 if (isset($_SESSION['usuario'])) {
     $conexion = conectar();
     $conexion->query("UPDATE usuarios SET token = '' WHERE usuario = '{$_SESSION['usuario']}'");
+    unset($conexion);
 }
 //Se destruye la sesión
 session_destroy();
