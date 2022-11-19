@@ -109,6 +109,16 @@ header > div > h1 > a:hover {
   color: rgb(197, 127, 127);
 }
 
+.principal {
+  font-size: 15px;
+  opacity: 0.1;
+}
+
+.principal:hover {
+  color: #c898fc;
+  opacity: 1;
+}
+
 .usuario_registrado {
   font-size: 25px;
   color: rgb(169, 127, 197);

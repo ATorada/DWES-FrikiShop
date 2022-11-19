@@ -1,6 +1,7 @@
 <header>
     <div class="cabecera">
         <h1><a href="index.php">MerchaShop Ángel</a></h1>
+        <a href="index.php" class="principal">Principal</a>
         <div class="cabecera_usuario">
             <?php
             // Si el usuario está logueado, mostramos su nombre, su carrito y un enlace para cerrar sesión
